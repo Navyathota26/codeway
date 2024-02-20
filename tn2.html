@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Calculator</title>
+    <style>body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url("./images.jpeg");
+        background-repeat: no-repeat;
+        background-size: 1500px 1000px;
+       
+    }
+    h1{
+        margin: 50px;
+    }
+    #calculator {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+        max-width: 400px;
+        
+        padding:  20px;
+        background-color: rgba(45, 59, 58, 0.578);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input {
+        grid-column: span 4;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+    button {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #5f959e;
+    }
+    button.operator {
+        background-color: #f0a500;
+        color: #fff;
+    }
+    button.operator:hover {
+        background-color: #e04b00;
+    }
+    button.equal {
+        background-color: #b8955c;
+        color: #fff;
+    }
+    button.equal:hover {
+        background-color: #ec5329;
+    }</style>
+ 
+</head>
+<body>
+    <h1>Calculator:</h1>
+    <div id="calculator">
+    
+        <input type="text" id="result" readonly>
+        <button onclick="clearInput()" class="del">Del</button>
+        <button onclick="appendToInput('-')">-</button>
+        <button onclick="appendToInput('+')" class="operator">+</button>
+        <button onclick="calculate()" class="equal">=</button>
+        <button onclick="clearInput()">C</button>
+        <button onclick="appendToInput('7')">7</button>
+        <button onclick="appendToInput('8')">8</button>
+        <button onclick="appendToInput('9')">9</button>
+        <button onclick="appendToInput('/')">/</button>
+        <button onclick="appendToInput('6')">6</button>
+        <button onclick="appendToInput('5')">5</button>
+        <button onclick="appendToInput('4')">4</button>
+        <button onclick="appendToInput('')"></button>
+        <button onclick="appendToInput('3')">3</button>
+        <button onclick="appendToInput('2')">2</button>
+        <button onclick="appendToInput('1')">1</button>
+        <button onclick="appendToInput('.')">.</button>
+        <button onclick="appendToInput('0')">0</button>
+        
+    </div>
+    
+    <script>function clearInput() {
+        var currentInput = document.getElementById('result').value;
+        document.getElementById('result').value = currentInput.slice(0, -1);
+    }
+    
+    function appendToInput(value) {
+        document.getElementById('result').value += value;
+    }
+    
+    function calculate() {
+        try {
+            document.getElementById('result').value = eval(document.getElementById('result').value);
+        } catch (error) {
+            document.getElementById('result').value = 'Error';
+        }
+    }</script>
+</body>
+</html>
